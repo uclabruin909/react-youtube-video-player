@@ -19,6 +19,8 @@ class App extends Component {
 
     this.onVideoSelect = this.onVideoSelect.bind(this);
 
+    this.videoSearch = this.videoSearch.bind(this);
+
     //set state.vidoes with initial dummy video information
     this.videoSearch('lebron');
 
@@ -42,7 +44,7 @@ class App extends Component {
   render() {
     return (
       <div>
-        <SearchBar/>
+        <SearchBar onSearchTermChange={this.videoSearch}/>
         <VideoDetail video={this.state.selectedVideo}/>
         <VideoList
           onVideoSelect={this.onVideoSelect}
