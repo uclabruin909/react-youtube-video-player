@@ -14,7 +14,10 @@ class App extends Component {
 
     this.state ={
       videos: [],
+      selectedVideo: null,
     };
+
+    this.onVideoSelect = this.onVideoSelect.bind(this);
 
     //set state.vidoes with initial dummy video information
     YTSearch({key: API_KEY, term: 'lebron james'}, function(videos) {
@@ -23,12 +26,20 @@ class App extends Component {
 
   }
 
+  onVideoSelect(selectedVideo) {
+    this.setState({
+      selectedVideo: selectedVideo
+    });
+  }
+
   render() {
     return (
       <div>
         <SearchBar/>
-        <VideoDetail video={this.state.videos[0]}/>
-        <VideoList videos={this.state.videos}/>
+        <VideoDetail video={this.state.selectedVideo}/>
+        <VideoList
+          onVideoSelect={this.onVideoSelect}
+          videos={this.state.videos}/>
       </div>
     );
   }
