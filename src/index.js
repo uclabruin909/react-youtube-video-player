@@ -21,7 +21,10 @@ class App extends Component {
 
     //set state.vidoes with initial dummy video information
     YTSearch({key: API_KEY, term: 'lebron james'}, function(videos) {
-      this.setState({videos: videos});
+      this.setState({
+        videos: videos,
+        selectedVideo: videos[0]
+      });
     }.bind(this));
 
   }
